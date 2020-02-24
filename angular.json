@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/mathlive/dist/mathlive.core.css",
+              "node_modules/mathlive/dist/mathlive.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/mathlive/dist/mathlive.js",
+              "node_modules/algebrite/dist/algebrite.bundle-for-browser.js",
+              "node_modules/nerdamer/nerdamer.core.js"
+            ]
           },
           "configurations": {
             "production": {

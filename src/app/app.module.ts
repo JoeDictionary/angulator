@@ -3,10 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MathEditorComponent } from './math-editor/math-editor.component';
+import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
+import { ButtonPadComponent } from './button-pad/button-pad.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MathEditorComponent,
+    ToggleSwitchComponent,
+    ButtonPadComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

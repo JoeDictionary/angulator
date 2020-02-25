@@ -1,7 +1,6 @@
 import { Component, AfterViewInit } from "@angular/core";
 import { Parser, Grammar } from "nearley";
 import grammar from "./grammar/grammar.js";
-import { CssSelector } from '@angular/compiler';
 
 
 
@@ -10,9 +9,6 @@ import { CssSelector } from '@angular/compiler';
   template: `
     <div
     id="mathfield"></div>
-    <button (click)="this.editorContent = '\sum ^{\placeholder{} }_{\placeholder{}} \left( \right)'">
-      editor insert text
-    </button>
     <!-- <div id="latex"></div>
     <div id="results"></div> -->
   `,
@@ -22,12 +18,13 @@ export class MathEditorComponent implements AfterViewInit {
   constructor() {}
 
   editor: any;
-  private _editorContent: any;
 
+  
+
+  private _editorContent: any;
   get editorContent(): string {
     return this.editor.$latex();
   }
-
   set editorContent(str: string) {
     console.log(str);
     this.editor.$insert(str, {
@@ -37,11 +34,6 @@ export class MathEditorComponent implements AfterViewInit {
       focus: true,
       smartFence: true,
     });
-  }
-
-
-  insert(str: string): void {
-    this.editor.$insert(str); 
   }
 
   nearleyParse(parseString: string) {

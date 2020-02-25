@@ -7,6 +7,7 @@ import { MathEditorComponent } from './math-editor/math-editor.component';
 import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
 import { ButtonPadComponent } from './button-pad/button-pad.component';
 import { ButtonComponent } from './button/button.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ButtonComponent } from './button/button.component';
     MathEditorComponent,
     ToggleSwitchComponent,
     ButtonPadComponent,
-    ButtonComponent
+    ButtonComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,

@@ -46,11 +46,11 @@ export let numPad: button[] = [
   { render: "\\times 10^x", insertionValue: "\\times 10^x" }
 ];
 
-export const basicOperators: (button | actionButton)[] = [
+export const basicOperations: (button | actionButton)[] = [
   { render: "DEL", action: action.DEL},
   { render:"AC", action: action.AC },
-  { render: '\\times;', insertionValue: '\\times' },
-  { render: '\\div;', insertionValue: '\\div' },
+  { render: '\\times', insertionValue: '\\times' },
+  { render: '\\div', insertionValue: '\\div' },
   { render: '+', insertionValue: '+' },
   { render: '-', insertionValue: '-' },
   { render: "=", action: action.EVAL },

@@ -1,20 +1,6 @@
 
-<!-- <div>
-	<div class="screen">
-		<math-editor></math-editor>
-	</div>
-	<div class="top-half">
-
-	</div>
-
-	<div id="bottom">
-		<button> $$ \sum ^{{ "\\placeholder{}" }}_{{ "\\placeholder{}" }} $$ </button>
-	</div>
-</div> -->
-
-
 <div id="pad">
-	<button *ngFor="let button of buttons">$${{ button.render }}$$</button>
+	<button *ngFor="let button of buttonData">$${{ button.render }}$$</button>
 </div>
 
 

@@ -1,5 +1,5 @@
-import { numPad } from './buttons';
-import { Component, OnInit } from '@angular/core';
+import { numPad, button, actionButton, action, basicOperations } from './buttons';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 
 @Component({
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss']
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent implements OnInit, AfterViewInit {
+
+  numPad = numPad;
+  basicOperations = basicOperations;
 
   constructor() { }
+
+  ngAfterViewInit() {
+    MathLive.renderMathInElement("keyboard");
+  }
 
   ngOnInit(): void {
   }

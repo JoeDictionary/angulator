@@ -1,5 +1,5 @@
 import { numPad, button, actionButton } from './../calculator/buttons';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 
@@ -8,17 +8,12 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   templateUrl: './button-pad.component.html',
   styleUrls: ['./button-pad.component.scss']
 })
-export class ButtonPadComponent implements AfterViewInit, OnInit {
+export class ButtonPadComponent implements OnInit {
+
+  @Input() public buttonData: button[];
+
 
   constructor() {}
-
-  buttons = numPad;
-
-  MathRender: any = MathLive;
-
-  ngAfterViewInit(): void {
-    MathLive.renderMathInElement("pad");
-  }
 
   ngOnInit(): void {
 

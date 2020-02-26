@@ -1,5 +1,7 @@
-#pad * * * {
+
+
+.button-pad {
 	// user-select: none;
 	// TODO select all elements in a button and set 'cursor: pointer' 
-	cursor: pointer;
+	display: grid;
 }

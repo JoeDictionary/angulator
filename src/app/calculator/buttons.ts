@@ -15,6 +15,7 @@ export interface button {
   // selector: string;
   render: string;
   insertionValue: string;
+  gridArea: string;
   // actionValue?: string;
   // executeCode(arg: any): any;
 }
@@ -28,32 +29,36 @@ export enum action {
 export interface actionButton {
   render: string;
   action: action;
+  gridArea: string;
 }
 
 
-export let numPad: button[] = [
-  { render: '7', insertionValue: '7' },
-  { render: '8', insertionValue: '8' },
-  { render: '9', insertionValue: '9' },
-  { render: '4', insertionValue: '4' },
-  { render: '5', insertionValue: '5' },
-  { render: '6', insertionValue: '6' },
-  { render: '1', insertionValue: '1' },
-  { render: '2', insertionValue: '2' },
-  { render: '3', insertionValue: '3' },
-  { render: '0', insertionValue: '0' },
-  { render: ".", insertionValue: "." },
-  { render: "\\times 10^x", insertionValue: "\\times 10^x" }
-];
+export let numPad: any = {
+  gridTemplateAreas : { 'grid-template-areas': "'_7 _8 _9', '_4 _5 _6', '_1 _2 _3',  '_0 _point _times10'" },
+  buttons: [
+    { render: '7', insertionValue: '7', gridArea: "'_7'" },
+    { render: '8', insertionValue: '8', gridArea: "'_8'"},
+    { render: '9', insertionValue: '9', gridArea: "'_9'"},
+    { render: '4', insertionValue: '4', gridArea: "'_4'"},
+    { render: '5', insertionValue: '5', gridArea: "'_5'"},
+    { render: '6', insertionValue: '6', gridArea: "'_6'"},
+    { render: '1', insertionValue: '1', gridArea: "'_1'"},
+    { render: '2', insertionValue: '2', gridArea: "'_2'"},
+    { render: '3', insertionValue: '3', gridArea: "'_3'"},
+    { render: '0', insertionValue: '0', gridArea: "'_0'"},
+    { render: ".", insertionValue: ".", gridArea: "'_point'"},
+    { render: "\\times 10^x", insertionValue: "\\times 10^x", gridArea: "'_times10'"}
+  ]
+}
 
 export const basicOperations: (button | actionButton)[] = [
-  { render: "DEL", action: action.DEL},
-  { render:"AC", action: action.AC },
-  { render: '\\times', insertionValue: '\\times' },
-  { render: '\\div', insertionValue: '\\div' },
-  { render: '+', insertionValue: '+' },
-  { render: '-', insertionValue: '-' },
-  { render: "=", action: action.EVAL },
+  { render: "DEL", action: action.DEL, gridArea: "_DEL"},
+  { render:"AC", action: action.AC , gridArea: "_AC"},
+  { render: '\\times', insertionValue: '\\times' , gridArea: "_times"},
+  { render: '\\div', insertionValue: '\\div' , gridArea: "_div"},
+  { render: '+', insertionValue: '+' , gridArea: "_plus"},
+  { render: '-', insertionValue: '-' , gridArea: "_minus"},
+  { render: "=", action: action.EVAL , gridArea: "_EVAL"},
 ]
 
 /* export const buttonList: any = {

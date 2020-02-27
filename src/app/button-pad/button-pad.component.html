@@ -1,6 +1,8 @@
 
-<div id="pad">
-	<button *ngFor="let button of buttonData">$${{ button.render }}$$</button>
+<!-- <style>
+	#pad {grid-template-areas: '_7 _8 _9' '_4 _5 _6' '_1 _2 _3' '_0 _point _times10';}
+</style> -->
+<div [style]="testStyle" id="pad">
+	<button [ngStyle]="{'grid-area': button.gridArea}" *ngFor="let button of buttonData.buttons">$${{ button.render }}$$</button>
 </div>
-
-
+	

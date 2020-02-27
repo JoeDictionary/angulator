@@ -1,7 +1,8 @@
 
 
-.button-pad {
+#pad {
 	// user-select: none;
-	// TODO select all elements in a button and set 'cursor: pointer' 
+	// TODO select all elements in a button and set 'cursor: pointer'
 	display: grid;
+	// grid-template-areas: '_7 _8 _9' '_4 _5 _6' '_1 _2 _3' '_0 _point _times10'
 }

@@ -1,5 +1,6 @@
 
 <div id="keyboard">
-	<!-- <button-pad [buttonData]="basicOperations"></button-pad> -->
-	<button-pad [buttonData]="numPad"></button-pad>
+	<math-editor></math-editor>
+	<button-pad (buttonPadEvent)="receiveButtonPadEvent($event)" [buttonData]="numPad"></button-pad>
+	<button-pad (buttonPadEvent)="receiveButtonPadEvent($event)" [buttonData]="basicOperations"></button-pad>
 </div>

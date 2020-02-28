@@ -1,22 +1,24 @@
-import { numPad, button, actionButton } from './../calculator/buttons';
-import { Component, OnInit, Input } from '@angular/core';
+import { buttonEvent } from './../calculator/buttons.types';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 
 
 @Component({
-  selector: 'button-pad',
-  templateUrl: './button-pad.component.html',
-  styleUrls: ['./button-pad.component.scss']
+	selector: 'button-pad',
+	templateUrl: './button-pad.component.html',
+	styleUrls: ['./button-pad.component.scss']
 })
 export class ButtonPadComponent implements OnInit {
 
-  @Input() public buttonData: any;
+	@Input() public buttonData: any;
+	@Output() buttonPadEvent = new EventEmitter();
 
-  testStyle = "grid-template-areas: '_7 _8 _9' '_4 _5 _6' '_1 _2 _3' '_0 _point _times10'"
-  constructor() {}
+	buttonPress(event: buttonEvent) {
+		this.buttonPadEvent.emit(event)
+	}
 
-  ngOnInit(): void {
+	constructor() {}
 
-  }
+	ngOnInit(): void {}
 
 }

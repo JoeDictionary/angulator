@@ -7,34 +7,27 @@ import grammar from "./grammar/grammar.js";
 @Component({
   selector: "math-editor",
   template: `
-    <div
-    id="mathfield"></div>
+    <div id="mathfield"></div>
     <!-- <div id="latex"></div>
     <div id="results"></div> -->
   `,
   styleUrls: ["./math-editor.component.scss"]
 })
 export class MathEditorComponent implements AfterViewInit {
-  constructor() {}
+	constructor() {}
+	
+	editor: any;
+	
 
-  editor: any;
+	
 
-  
-
-  private _editorContent: any;
-  get editorContent(): string {
-    return this.editor.$latex();
-  }
-  set editorContent(str: string) {
-    console.log(str);
-    this.editor.$insert(str, {
-      insertionMode: "insertAfter",
-      selectionMode: "placeholder",
-      format: "",
-      focus: true,
-      smartFence: true,
-    });
-  }
+	/* this.editor.$insert(str, {
+		insertionMode: "insertAfter",
+		selectionMode: "placeholder",
+		format: "",
+		focus: true,
+		smartFence: true,
+	}); */
 
   nearleyParse(parseString: string) {
     const parser = new Parser(Grammar.fromCompiled(grammar));

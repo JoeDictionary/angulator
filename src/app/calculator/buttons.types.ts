@@ -18,7 +18,7 @@ export interface actionButton {
 }
 
 export enum action {
-			DEL,
+			DEL = 0,
 			AC,
 			EVAL
 }

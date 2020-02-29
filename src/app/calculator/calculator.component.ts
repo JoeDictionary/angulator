@@ -14,7 +14,7 @@ export class CalculatorComponent implements OnInit, AfterViewInit {
 	basicOperations = basicOperations;
 
 	receiveButtonPadEvent(event: buttonEvent) {
-		console.log(event);
+		// console.log(event);
 	}
 	
 	ngAfterViewInit() {

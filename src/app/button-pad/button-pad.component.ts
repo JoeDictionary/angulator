@@ -1,3 +1,4 @@
+import { ButtonPressService } from './../math-editor/button-press.service';
 import { buttonEvent } from './../calculator/buttons.types';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -11,14 +12,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonPadComponent implements OnInit {
 
 	@Input() public buttonData: any;
-	@Output() buttonPadEvent = new EventEmitter();
+	// @Output() buttonPadEvent = new EventEmitter();
 
-	buttonPress(event: buttonEvent) {
-		this.buttonPadEvent.emit(event)
+	buttonPress(btnPackage: buttonEvent) {
+		// this.buttonPadEvent.emit(event)
+		this._ButtonPressService.sendButtonPackage(btnPackage);
 	}
 
-	constructor() {}
+	constructor(private _ButtonPressService: ButtonPressService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		
+	}
 
 }

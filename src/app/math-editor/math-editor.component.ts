@@ -1,6 +1,9 @@
-import { Component, AfterViewInit } from "@angular/core";
+import { buttonEvent, action } from './../calculator/buttons.types';
+import { ButtonPressService } from './button-press.service';
+import { Component, AfterViewInit, OnInit } from "@angular/core";
 import { Parser, Grammar } from "nearley";
 import grammar from "./grammar/grammar.js";
+
 
 
 
@@ -13,21 +16,38 @@ import grammar from "./grammar/grammar.js";
   `,
   styleUrls: ["./math-editor.component.scss"]
 })
-export class MathEditorComponent implements AfterViewInit {
-	constructor() {}
+export class MathEditorComponent implements OnInit , AfterViewInit {
 	
 	editor: any;
-	
 
-	
+  executeButtonPackage(btnPackage: buttonEvent) {
+    console.log(btnPackage);
+    if (btnPackage.insert) {
+      this.editor.$insert(btnPackage.insert, {
+        insertionMode: "insertAfter",
+        selectionMode: "placeholder",
+        format: "",
+        focus: true,
+        smartFence: true
+      })
+    }
 
-	/* this.editor.$insert(str, {
-		insertionMode: "insertAfter",
-		selectionMode: "placeholder",
-		format: "",
-		focus: true,
-		smartFence: true,
-	}); */
+    if (btnPackage) {
+      switch (action[btnPackage.action]) {
+        case (action[action.DEL]):
+          console.log("DEL");
+          break;
+        
+        case (action[action.EVAL]):
+          console.log("EVAL");          
+          break;
+      
+        default: console.log("None of the above");
+          break;
+      }
+    }
+
+  }
 
   nearleyParse(parseString: string) {
     const parser = new Parser(Grammar.fromCompiled(grammar));
@@ -65,4 +85,16 @@ export class MathEditorComponent implements AfterViewInit {
 
     // this.editorContent  = this.editor.$latex();
   }
+
+  constructor(private _ButtonPressService: ButtonPressService) {}
+  
+  ngOnInit(): void {
+    this._ButtonPressService.ButtonPackage$
+      .subscribe(
+        btnPackage => {
+          this.executeButtonPackage(btnPackage);
+        }
+      )
+  }
+
 }

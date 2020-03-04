@@ -1,3 +1,22 @@
-buttonPad {
-	color: red;
+#calculator {
+	display: grid;
+	// color: red;
+	max-width: 20%;
+	margin: auto;
+	
+	grid-template-areas:
+		"ME ME"
+		"NP BOP"
+}
+
+#NP {
+	grid-area: NP ;
+}
+
+#BOP {
+	grid-area: BOP;
+}
+
+#ME {
+	grid-area: ME;
 }

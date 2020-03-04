@@ -3,6 +3,7 @@
 	<button 
 	*ngFor="let button of buttonData.buttons"
 	[ngStyle]="{'grid-area': button.gridArea}"
+	class="raised"
 	(click)="buttonPress({insert: button.insert, action: button.action})"
 	>$${{button.render}}$$
 	</button>

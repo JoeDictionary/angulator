@@ -18,7 +18,7 @@ export class CalculatorComponent implements OnInit, AfterViewInit {
 	}
 	
 	ngAfterViewInit() {
-		MathLive.renderMathInElement("keyboard");
+		MathLive.renderMathInElement("calculator");
 	}
 	
 	constructor() {}

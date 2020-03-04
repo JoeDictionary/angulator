@@ -1,24 +1,21 @@
-import { buttonEvent, action } from './../calculator/buttons.types';
-import { ButtonPressService } from './button-press.service';
+import { buttonEvent, action } from "./../calculator/buttons.types";
+import { ButtonPressService } from "./button-press.service";
 import { Component, AfterViewInit, OnInit } from "@angular/core";
 import { Parser, Grammar } from "nearley";
 import grammar from "./grammar/grammar.js";
 
-
-
-
 @Component({
   selector: "math-editor",
   template: `
-    <div id="mathfield"></div>
+    <div class="sunken" id="mathfield"></div>
     <!-- <div id="latex"></div>
     <div id="results"></div> -->
   `,
   styleUrls: ["./math-editor.component.scss"]
 })
-export class MathEditorComponent implements OnInit , AfterViewInit {
-	
+export class MathEditorComponent implements OnInit, AfterViewInit {
 	editor: any;
+	
 
   executeButtonPackage(btnPackage: buttonEvent) {
     console.log(btnPackage);
@@ -29,24 +26,30 @@ export class MathEditorComponent implements OnInit , AfterViewInit {
         format: "",
         focus: true,
         smartFence: true
-      })
+      });
     }
 
-    if (btnPackage) {
+    if (btnPackage.action) {
       switch (action[btnPackage.action]) {
-        case (action[action.DEL]):
-          console.log("DEL");
+        case action[action.DEL]:
+					console.log("DEL");
+					this.editor.$perform("deletePreviousChar");
           break;
-        
-        case (action[action.EVAL]):
-          console.log("EVAL");          
+
+        case action[action.EVAL]:
+          console.log("EVAL");
           break;
-      
-        default: console.log("None of the above");
+
+        case action[action.AC]:
+					console.log("AC");
+					this.editor.$perform("deleteAll");
+          break;
+
+        default:
+          console.log("None of the above");
           break;
       }
     }
-
   }
 
   nearleyParse(parseString: string) {
@@ -82,19 +85,14 @@ export class MathEditorComponent implements OnInit , AfterViewInit {
       }
     });
 
-
     // this.editorContent  = this.editor.$latex();
   }
 
   constructor(private _ButtonPressService: ButtonPressService) {}
-  
-  ngOnInit(): void {
-    this._ButtonPressService.ButtonPackage$
-      .subscribe(
-        btnPackage => {
-          this.executeButtonPackage(btnPackage);
-        }
-      )
-  }
 
+  ngOnInit(): void {
+    this._ButtonPressService.ButtonPackage$.subscribe(btnPackage => {
+      this.executeButtonPackage(btnPackage);
+    });
+  }
 }

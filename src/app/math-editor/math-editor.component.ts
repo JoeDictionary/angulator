@@ -7,15 +7,23 @@ import grammar from "./grammar/grammar.js";
 @Component({
   selector: "math-editor",
   template: `
-    <div class="sunken" id="mathfield"></div>
+    <div 
+    class="sunken"
+    id="mathfield"
+    (click)="focus()"
+    ></div>
     <!-- <div id="latex"></div>
     <div id="results"></div> -->
   `,
   styleUrls: ["./math-editor.component.scss"]
 })
 export class MathEditorComponent implements OnInit, AfterViewInit {
-	editor: any;
-	
+  editor: any;
+
+  focus():void {
+    this.editor.$focus();
+  }
+
 
   executeButtonPackage(btnPackage: buttonEvent) {
     console.log(btnPackage);
@@ -62,6 +70,7 @@ export class MathEditorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
     this.editor = MathLive.makeMathField("mathfield", {
       virtualKeyboardMode: "manual",
       virtualKeyboardTheme: "material",
@@ -85,6 +94,7 @@ export class MathEditorComponent implements OnInit, AfterViewInit {
       }
     });
 
+    this.editor.$focus();
     // this.editorContent  = this.editor.$latex();
   }
 

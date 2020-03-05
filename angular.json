@@ -29,8 +29,10 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/mathlive/dist/mathlive.core.css",
-              "node_modules/mathlive/dist/mathlive.css"
+              "src/app/math-editor/mathlive-style/mathlive.core.css",
+              "src/app/math-editor/mathlive-style/mathlive.css",
+              // "node_modules/mathlive/dist/mathlive.core.css",
+              // "node_modules/mathlive/dist/mathlive.css"
             ],
             "scripts": [
               "node_modules/mathlive/dist/mathlive.js",
